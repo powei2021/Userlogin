@@ -1,0 +1,20 @@
+{
+  "name": "userlogin",
+  "version": "1.0.0",
+  "description": "login system",
+  "main": "index.js",
+  "scripts": {
+    "build": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "christy",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.8"
+  }
+}
