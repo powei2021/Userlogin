@@ -1,5 +1,5 @@
 const express = require('express')
-//const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 require('dotenv').config();
 const MongoDB = require('./utils/mongo.config')
 const indexRouter = require('./routes/create');
@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
-//app.get('/', indexRouter);
+app.use('/', indexRouter);
   
 app.listen(PORT, async() => {
     await MongoDB();

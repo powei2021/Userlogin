@@ -3,6 +3,7 @@ const router = express.Router();
 const createCtrl = require('../controller/create.controller');
 
 /* Get home page */
-router.post('/register', createCtrl.register);
+router.use('/register', createCtrl.register);
+router.post('/login', createCtrl.login);
 
-module.export = router;
+module.exports = router;
