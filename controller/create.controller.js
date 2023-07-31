@@ -12,10 +12,9 @@ module.exports = {
             const salt = await bcrypt.genSalt(20);
             const hashedPassword = await bcrypt.hash(password, salt);
 
-            console.log({ tokenSecretKey });
-          
+            //console.log({ tokenSecretKey }); 
             //create a new user
-            const user = await User.create({
+            const user = await new User({
                 firstname,
                 lastname,
                 dateOfBirth,
@@ -25,6 +24,20 @@ module.exports = {
                 address,
                 password: hashedPassword,
             })
+            // token secret key
+            const tokenSecretKey = process.env.JWT_SECRET;
+            //data to be
+            const data = { _id: user._id };
+            console.log(data)
+            //token expiration time
+            const tokenExpirationTime = process.env.JWT_EXPIRATION_TIME;
+            console.log(tokenExpirationTime);
+
+            //create a token
+            const token = jwt.sign(data, tokenSecretKey, {
+                expiresIn: tokenExpirationTime
+            })
+            console.log(token);
             //await user.save();
             if(!user) return res.status(400).json({result: "User not created" });
             return res.status(200).json({result: user});
